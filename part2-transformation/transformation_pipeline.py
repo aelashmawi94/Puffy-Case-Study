@@ -1,4 +1,4 @@
-FOLDER_PATH = "C:\\Users\\aelas\\Desktop\\HoDIA-STdataset-20251118T051305Z-1-001\\HoDIA-STdataset"  # Edit path to the folder containing the event csvs. Make sure there are no other csvs there.
+FOLDER_PATH = "event-file-input"  # Edit path to the folder containing the event csvs. Make sure there are no other csvs there.
 
 # Building Enriched Events
 

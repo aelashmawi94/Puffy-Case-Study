@@ -10,34 +10,30 @@ Each stage builds on the outputs of the previous one, so the project must be run
 
 - Python 3.9+
 - `pip`
-- A folder containing **only event CSV files** (no other CSVs)
 
 ---
 
 ## Setup
 
-1. Install dependencies:
+Install dependencies:
 pip install -r requirements.txt
-
-
-2. Before running the pipeline, update the **data path** in the following files:
-
-- `part1-data-quality/data_validation_framework.py`
-- `part2-transformation/transformation_pipeline.py`
-
-In **both files**, edit the **first line** to point to the folder where your event CSV files are stored.
-
-**Important constraints:**
-- The folder must contain **only event CSV files**
-- Do not place any other CSVs in this directory
 
 ## Execution Order
 
 The pipeline must be run in the exact order below due to layered dependencies.
 
+## Adding Data
+
+Create a folder named "event-file-input" in the "PUFFY-CASE_STUDY" folder containing **only event CSV files** (no other CSVs)
+
+**Important constraints:**
+- The folder must contain **only event CSV files**
+- Do not place any other CSVs in this directory
+
 ### 1. Data Quality Validation
 
-From the `part1-data-quality` folder:
+Run the following command:
+python part1-data-quality/data_validation_framework.py
 This step:
 - Validates schema and column-level constraints
 - Detects schema drift
@@ -45,7 +41,8 @@ This step:
 
 ### 2. Data Transformation
 
-From the `part2-transformation` folder:
+Run the following command:
+python part2-transformation/transformation_pipeline.py
 This step:
 - Builds transformed datasets (sessions, users, conversions, etc.)
 - Outputs multiple CSV files
@@ -53,13 +50,14 @@ This step:
 
 ### 3. Data Analysis
 
-From the `part3-analysis` folder:
+Review the pdf file.
 This step:
 - Contains analysis done in a pdf file.
 
 ### 4. Production Monitoring
 
-From the `part4-production-monitoring` folder:
+Run the following command:
+python part4-monitoring/production_monitoring.py 
 This step:
 - Consumes transformed CSV outputs
 - Monitors pipeline health, data freshness, and anomalies
